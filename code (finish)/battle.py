@@ -254,7 +254,7 @@ class Battle:
 				surf = self.monster_frames['ui'][f"{data_dict['icon']}_highlight"]
 			else:
 				surf = pygame.transform.grayscale(self.monster_frames['ui'][data_dict['icon']])
-			rect = surf.get_frect(center = self.current_monster.rect.midright + data_dict['pos'])
+			rect = surf.get_rect(center = self.current_monster.rect.midright + data_dict['pos'])
 			self.display_surface.blit(surf, rect)
 
 	def draw_attacks(self):
@@ -281,7 +281,7 @@ class Battle:
 			text_surf  = self.fonts['regular'].render(ability, False, text_color)
 
 			# rect 
-			text_rect = text_surf.get_frect(center = bg_rect.midtop + vector(0, item_height / 2 + index * item_height + v_offset))
+			text_rect = text_surf.get_rect(center = bg_rect.midtop + vector(0, item_height / 2 + index * item_height + v_offset))
 			text_bg_rect = pygame.FRect((0,0), (width, item_height)).move_to(center = text_rect.center)
 
 			# draw
@@ -314,9 +314,9 @@ class Battle:
 			item_bg_rect = pygame.FRect((0,0), (width, item_height)).move_to(midleft = (bg_rect.left, bg_rect.top + item_height / 2 + index * item_height + v_offset))
 
 			icon_surf = self.monster_frames['icons'][monster.name]
-			icon_rect = icon_surf.get_frect(midleft = bg_rect.topleft + vector(10,item_height / 2 + index * item_height + v_offset))
+			icon_rect = icon_surf.get_rect(midleft = bg_rect.topleft + vector(10,item_height / 2 + index * item_height + v_offset))
 			text_surf = self.fonts['regular'].render(f'{monster.name} ({monster.level})', False, COLORS['red'] if selected else COLORS['black'])
-			text_rect = text_surf.get_frect(topleft = (bg_rect.left + 90, icon_rect.top))
+			text_rect = text_surf.get_rect(topleft = (bg_rect.left + 90, icon_rect.top))
 
 			# selection bg
 			if selected:
